@@ -1,6 +1,6 @@
 import * as amqp from 'amqplib'
 import { IQueueProvider } from '../../domain/queue/IQueueProvider'
-import { loggerEvents } from '../shared/LogEventEmitter.js'
+import { loggerEvents } from '../shared/LogEventEmitter'
 
 export class RabbitMQProvider implements IQueueProvider {
   private connection!: any // Set as 'any' -> Buggy! -> amqp.Connection
