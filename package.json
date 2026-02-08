@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "start:server": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "start:workers": "ts-node-dev --respawn --transpile-only src/consumers.ts",
     "build": "tsc",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down"
@@ -12,7 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "dependencies": {
     "amqplib": "^0.10.9",
     "dotenv": "^17.2.4",

@@ -1,0 +1,152 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "731c88a2-7260-4b5a-abc2-137890573ff9",
+      "type": "producer",
+      "name": "OrderService",
+      "position": {
+        "x": 130.22222900390625,
+        "y": 199.17190551757812
+      }
+    },
+    {
+      "id": "11403b76-a8d2-40ea-bcc0-0e794f01e016",
+      "type": "exchange",
+      "name": "order_events",
+      "position": {
+        "x": 420.78302001953125,
+        "y": 248.25350952148438
+      },
+      "exchangeType": "fanout",
+      "durable": true,
+      "autoDelete": false
+    },
+    {
+      "id": "340bbb81-56ac-4123-83b9-55d34a80c45a",
+      "type": "queue",
+      "name": "notification_queue",
+      "position": {
+        "x": 764.77783203125,
+        "y": 63.253509521484375
+      },
+      "durable": true,
+      "autoDelete": false,
+      "messages": []
+    },
+    {
+      "id": "df5016bc-8e33-4c24-bd7a-6fd07ac6b2c1",
+      "type": "queue",
+      "name": "payment_queue",
+      "position": {
+        "x": 801.77783203125,
+        "y": 240.25350952148438
+      },
+      "durable": true,
+      "autoDelete": false,
+      "messages": []
+    },
+    {
+      "id": "def8d9e6-53f5-4cff-8c5f-ab0d7dbbd0b9",
+      "type": "queue",
+      "name": "inventory_queue",
+      "position": {
+        "x": 754.77783203125,
+        "y": 420.2535095214844
+      },
+      "durable": true,
+      "autoDelete": false,
+      "messages": []
+    },
+    {
+      "id": "9bf6ae50-6a13-45c7-9039-d06c5373fef2",
+      "type": "consumer",
+      "name": "NotificationService",
+      "position": {
+        "x": 1103.77783203125,
+        "y": 39.253509521484375
+      },
+      "autoAck": true,
+      "prefetchCount": 1,
+      "processingTime": 1000,
+      "consumedCount": 4,
+      "isProcessing": false,
+      "unackedCount": 0
+    },
+    {
+      "id": "110a4050-62c0-4d2a-9578-d36ad0c08b88",
+      "type": "consumer",
+      "name": "PaymentService",
+      "position": {
+        "x": 1084.77783203125,
+        "y": 241.25350952148438
+      },
+      "autoAck": true,
+      "prefetchCount": 1,
+      "processingTime": 1000,
+      "consumedCount": 4,
+      "isProcessing": false,
+      "unackedCount": 0
+    },
+    {
+      "id": "9ea9f7d6-1a9c-4f34-80e8-5d59c46f9a12",
+      "type": "consumer",
+      "name": "InventoryService",
+      "position": {
+        "x": 1101.77783203125,
+        "y": 436.2535095214844
+      },
+      "autoAck": true,
+      "prefetchCount": 1,
+      "processingTime": 1000,
+      "consumedCount": 4,
+      "isProcessing": false,
+      "unackedCount": 0
+    }
+  ],
+  "connections": [
+    {
+      "id": "ef6a8486-d7f7-4f79-a5ce-43e3d1acead0",
+      "sourceId": "731c88a2-7260-4b5a-abc2-137890573ff9",
+      "targetId": "11403b76-a8d2-40ea-bcc0-0e794f01e016",
+      "routingKey": ""
+    },
+    {
+      "id": "9937ff8c-0169-4b54-96ab-f8c443aa6432",
+      "sourceId": "11403b76-a8d2-40ea-bcc0-0e794f01e016",
+      "targetId": "340bbb81-56ac-4123-83b9-55d34a80c45a",
+      "routingKey": ""
+    },
+    {
+      "id": "c011e999-1c6a-4d34-9b0a-388cafb04314",
+      "sourceId": "11403b76-a8d2-40ea-bcc0-0e794f01e016",
+      "targetId": "df5016bc-8e33-4c24-bd7a-6fd07ac6b2c1",
+      "routingKey": ""
+    },
+    {
+      "id": "9124b05c-bc25-4145-b128-ae41c1e99f86",
+      "sourceId": "11403b76-a8d2-40ea-bcc0-0e794f01e016",
+      "targetId": "def8d9e6-53f5-4cff-8c5f-ab0d7dbbd0b9",
+      "routingKey": ""
+    },
+    {
+      "id": "f78856e9-d2a2-49ee-9aba-44dfc1762695",
+      "sourceId": "340bbb81-56ac-4123-83b9-55d34a80c45a",
+      "targetId": "9bf6ae50-6a13-45c7-9039-d06c5373fef2",
+      "routingKey": ""
+    },
+    {
+      "id": "b8a3f37f-19fb-414a-bb30-5c1e01f65971",
+      "sourceId": "df5016bc-8e33-4c24-bd7a-6fd07ac6b2c1",
+      "targetId": "110a4050-62c0-4d2a-9578-d36ad0c08b88",
+      "routingKey": ""
+    },
+    {
+      "id": "219af18c-49b1-4b97-a424-085f5872f6f0",
+      "sourceId": "def8d9e6-53f5-4cff-8c5f-ab0d7dbbd0b9",
+      "targetId": "9ea9f7d6-1a9c-4f34-80e8-5d59c46f9a12",
+      "routingKey": ""
+    }
+  ],
+  "timestamp": 1770519331582
+}
