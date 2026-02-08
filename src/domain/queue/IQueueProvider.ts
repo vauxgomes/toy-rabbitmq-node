@@ -1,11 +1,11 @@
 export interface IQueueProvider {
   connect(): Promise<void>
-  disconnect(): Promise<void>;
-  
-  publishInExchange(
+  disconnect(): Promise<void>
+
+  publishInExchange<T = any>(
     exchange: string,
     routingKey: string,
-    message: any
+    message: T
   ): Promise<boolean>
 
   // https://www.rabbitmq.com/docs/exchanges#types
@@ -13,6 +13,4 @@ export interface IQueueProvider {
     exchange: string,
     type: 'fanout' | 'direct' | 'topic'
   ): Promise<void>
-
-  
 }

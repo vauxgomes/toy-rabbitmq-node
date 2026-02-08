@@ -1,4 +1,5 @@
 import * as amqp from 'amqplib'
+
 import { IQueueProvider } from '../../domain/queue/IQueueProvider'
 import { loggerEvents } from '../shared/LogEventEmitter'
 
@@ -53,10 +54,10 @@ export class RabbitMQProvider implements IQueueProvider {
    * @param message Message payload (NOTE: will be stringified to JSON)
    * @returns
    */
-  async publishInExchange(
+  async publishInExchange<T = any>(
     exchange: string,
     routingKey: string,
-    message: any
+    message: T
   ): Promise<boolean> {
     if (!this.channel) throw new Error('Channel not initialized')
 
